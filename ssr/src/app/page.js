@@ -8,22 +8,26 @@ const getData = async () => {
 
 export default async function Home() {
   const data = await getData();
-
+  const jokes =
+    data.length === 0 ? 
+      "LOADING"
+     : (
+      <ol className="list-decimal">
+        {data.map((joke) => (
+          <li key={joke.id}>
+            {joke.setup} - {joke.punchline}
+          </li>
+        ))}
+      </ol>
+    );
   return (
     <>
-      <div>
-        <h1>Here are some Jokes!</h1>
-        <br></br>
-        <br></br>
-        <ol>
-          {data.map((joke) => (
-            <li key={joke.id}>
-              <Link href="/joke/1">{joke.setup}</Link>
-            </li>
-          ))}
-        </ol>
+      <>
+      <div className="bg-sky-500/50 p-10 rounded-md w-3/4">
+        <h2>Here are some Jokes!</h2>
+        <div>{jokes}</div>
       </div>
-      <div></div>
+    </>
     </>
   );
 }

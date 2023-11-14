@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -35,7 +35,6 @@ export default function Home() {
         <h2>Here are some Jokes!</h2>
         <div>{jokes}</div>
       </div>
-      <div></div>
     </>
   );
 }
