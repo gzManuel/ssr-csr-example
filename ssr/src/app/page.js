@@ -1,22 +1,29 @@
 const getData = async () => {
-  const response = await fetch('https://official-joke-api.appspot.com/random_ten')
-  const data = await response.json()
+  const response = await fetch(
+    "https://official-joke-api.appspot.com/random_ten"
+  );
+  const data = await response.json();
   return data;
-}
+};
 
-export default async function Home () {
-  
-    const data = await getData();
-  
+export default async function Home() {
+  const data = await getData();
 
   return (
-    <main>
-      <h1>Here are some Jokes!</h1>
-      <ul>
-        {data.map(joke => (
-          <li key={joke.id}>{joke.setup} - {joke.punchline}</li>
-        ))}
-      </ul>
-    </main>
-  )
+    <>
+      <div>
+        <h1>Here are some Jokes!</h1>
+        <br></br>
+        <br></br>
+        <ol>
+          {data.map((joke) => (
+            <li key={joke.id}>
+              <Link href="/joke/1">{joke.setup}</Link>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div></div>
+    </>
+  );
 }
